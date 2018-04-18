@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Copyright>Copyright © UNIT-SOFT Sp. z o.o.</Copyright>
+
+    <Company>UNIT-SOFT Sp. z o.o.</Company>
+
+    <Authors>UNIT-SOFT Sp. z o.o.</Authors>
+
+    <PackageProjectUrl>https://grandnode.com/</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="appsettingstest.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.0" />
+    <PackageReference Include="Moq" Version="4.8.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+    <PackageReference Include="NUnit" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Grand.Core\Grand.Core.csproj" />
+    <ProjectReference Include="..\..\Grand.Framework\Grand.Framework.csproj" />
+    <ProjectReference Include="..\..\Grand.Services\Grand.Services.csproj" />
+  </ItemGroup>
+
+</Project>

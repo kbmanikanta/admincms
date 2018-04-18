@@ -1,0 +1,36 @@
+﻿@model HomePageBlogItemsModel
+@if (Model.Items.Any())
+{
+    <div class="blog-list-homepage">
+        <h2 class="generalTitle text-center mb-3">
+            @T("Blog.Latest")
+        </h2>
+            <div class="row">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col-lg-4 col-md-6 col-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <a href="@Url.RouteUrl("BlogPost", new { SeName = item.SeName })">
+                                @if (item.PictureModel != null && !string.IsNullOrEmpty(item.PictureModel.ImageUrl))
+                                {
+                                    <img class="card-img-top img-fluid" alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title">
+                                }
+                                <h3 class="h5">@item.Title</h3></a>
+                                <span class="news-date">-@item.CreatedOn.ToString("D")</span>
+                            </div>
+                            <div class="card-body">
+                                @Html.Raw(item.Short)
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-sm btn-primary read-more" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@T("Blog.MoreInfo")</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        <div class="view-all text-center">
+            <a class="btn btn-secondary" href="@Url.RouteUrl("Blog")">@T("Blog.ViewAll")</a>
+        </div>
+    </div>
+}

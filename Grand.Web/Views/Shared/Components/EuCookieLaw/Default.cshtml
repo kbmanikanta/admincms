@@ -1,0 +1,32 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $('#eu-cookie-bar-notification').show();
+
+        $('#eu-cookie-ok').click(function () {
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.RouteUrl("EuCookieLawAccept")',
+                dataType: 'json',
+                success: function (data) {
+                    $('#eu-cookie-bar-notification').hide();
+                },
+                failure: function () {
+                    alert('Cannot store value');
+                }
+            });
+    });
+    });
+</script>
+
+<div id="eu-cookie-bar-notification" class="eu-cookie-bar-notification generalNote card text-white card-success text-xs-center" style="display:none;">
+    <div class="buttons-more">
+        <blockquote class="card-bodyquote">
+            <p>@T("EUCookieLaw.Description2")</p>
+            <p>
+                <a class="ok-button btn-sm btn btn-success" id="eu-cookie-ok">@T("Common.OK")</a>
+                <a class="btn btn-sm btn-info learn-more" href="@Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("privacyinfo") })">@T("EUCookieLaw.LearnMore")</a>
+            </p>
+        </blockquote>
+    </div>
+</div>

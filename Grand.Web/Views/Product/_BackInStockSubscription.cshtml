@@ -1,0 +1,34 @@
+﻿@model ProductDetailsModel
+@if (Model.DisplayBackInStockSubscription)
+{
+    <input type="button" id="back-in-stock-subscribe-@Model.Id" class="btn btn-secondary btn-sm subscribe-button" value="@T("BackInStockSubscriptions.NotifyMeWhenAvailable")" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#back-in-stock-subscribe-@Model.Id").click(function (event) {
+                var posting = $.get('@Url.RouteUrl("BackInStockSubscribePopup", new { productId = Model.Id })');
+                posting.done(function (result) {
+                    $('#modal-subscribe').html(result);
+                });
+                $('#subscribe-modal-form').modal('show');
+                $("body.modal-open").removeAttr("style");
+                $(".navUp").removeAttr("style");
+            });
+        });
+    </script>
+
+    <div class="modal fade" id="subscribe-modal-form">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-subscribe">
+                    @T("BackInStockSubscriptions.PleaseWait")
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

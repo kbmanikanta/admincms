@@ -1,0 +1,8 @@
+﻿@if (this.ShouldUseRtlTheme())
+{
+    <text>dir="rtl" lang="@(this.WorkingLanguage())" </text>
+}
+else
+{
+    <text>lang="@(this.WorkingLanguage())"</text>
+}

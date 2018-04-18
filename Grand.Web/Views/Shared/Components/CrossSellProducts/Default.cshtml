@@ -1,0 +1,15 @@
+﻿@model IList<ProductOverviewModel>
+@if (Model.Any())
+{
+    <div class="col-12 product-grid cross-sells pt-1 px-0">
+            <h4 class="generalTitle"><strong>@T("ShoppingCart.CrossSells")</strong></h4>
+        <div class="row flex-grid">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-4 col-sm-6 col-12 mb-2">
+                    @await Html.PartialAsync("_ProductBox", product)
+                </div>
+            }
+        </div>
+    </div>
+}

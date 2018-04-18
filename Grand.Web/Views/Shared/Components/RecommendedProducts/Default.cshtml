@@ -1,0 +1,17 @@
+﻿@model IList<ProductOverviewModel>
+@if (Model.Any())
+{
+    <div class="product-grid recommended-product-grid pt-2">
+        <h2 class="generalTitle text-sm-center">
+            @T("HomePage.Recommended.Products")
+        </h2>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-6 col-12">
+                        @await Html.PartialAsync("_ProductBox", item)
+                    </div>
+                }
+            </div>
+    </div>
+}
